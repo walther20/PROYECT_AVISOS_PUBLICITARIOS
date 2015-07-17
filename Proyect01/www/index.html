@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+    <!--
+  * Please see the included README.md file for license terms and conditions.
+  -->
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="galleria/galleria.classic.css">
+        <link rel="stylesheet" type="text/css" href="media_button_bar/css/media_button_bar.css">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="app_framework/2.1/css/af.ui.min.css">
+        <link rel="stylesheet" type="text/css" href="app_framework/2.1/css/icons.min.css">
+        <title>Blank App Designer Cordova Web App Project Template</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+        <!--
+  * The "meta viewport" tag (below) helps your app size appropriately to a device's ideal viewport.
+  * Note that Windows device viewports work better when initialized using the @viewport CSS rule.
+  * For a quick overview of "meta viewport" and @viewport, see this article:
+  *   http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag
+  * To see how it works, try your app on a real device with and without a "meta viewport" tag.
+  * Additional useful references include:
+  *   http://www.quirksmode.org/mobile/viewports.html
+  *   http://www.quirksmode.org/mobile/metaviewport/devices.html
+  *   https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html
+-->
+
+        <!-- <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1"> -->
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"> -->
+
+        <style>
+            /* following three (cascaded) are equivalent to above three meta viewport statements */
+            /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html */
+            /* see http://dev.w3.org/csswg/css-device-adapt/ */
+                @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+                @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+                /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+        </style>
+
+        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+
+        <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
+        <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work below -->
+        <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+
+        <!-- Recommended location for your JavaScript libraries -->
+        <!-- These library references (below) are just examples to give you the general idea... -->
+        <!-- <script src="lib/mc/hammer.js"></script> -->
+        <!-- <script src="lib/ft/fastclick.js"></script> -->
+
+        <!--
+  * cordova.js is a phantom lib for "Cordova HTML5 web app," it does nothing in a "Standard HTML5 web app"
+  * Seeing a "Failed to load resource: net::ERR_FILE_NOT_FOUND" message caused by this "cordova.js" script?
+  * The cordova.js script is required if you convert your "Standard HTML5" project into a "Cordova" project.
+  * You can safely ignore the error or comment out this line if you will not be developing a Cordova app.
+-->
+        <script src="cordova.js" id="xdkJScordova_"></script>
+
+        <script src="js/app.js"></script>
+        <!-- for your event code, see README and file comments for details -->
+        <script src="js/init-app.js"></script>
+        <!-- for your init code, see README and file comments for details -->
+        <script src="xdk/init-dev.js"></script>
+        <!-- normalizes device and document ready events, see file for details -->
+        <!--            
+            You may substitute jQuery for the App Framework selector library.
+            See http://app-framework-software.intel.com/documentation.php#afui/afui_jquery
+        -->
+        <script type="application/javascript" src="app_framework/2.1/appframework.js"></script>
+        <script type="application/javascript" src="app_framework/2.1/appframework.ui.js" data-ver="1"></script>
+        <!--            
+            You may substitute jQuery for the App Framework selector library.
+            See http://app-framework-software.intel.com/documentation.php#afui/afui_jquery
+        -->
+        <script type="application/javascript" src="console/console_widget.js"></script>
+        <script type="application/javascript" src="webrtc/socket.io.js" data-ver="0"></script>
+        <script type="application/javascript" src="webrtc/gab.websocket.js" data-ver="1"></script>
+        <!--            
+            You may substitute jQuery for the App Framework selector library.
+            See http://app-framework-software.intel.com/documentation.php#afui/afui_jquery
+        -->
+        <script type="application/javascript" src="lib/jquery.min.js"></script>
+        <script type="application/javascript" src="sidebar/js/hammer.js"></script>
+        <script type="application/javascript" src="sidebar/js/jquery.hammer.js"></script>
+        <script type="application/javascript" src="sidebar/js/swipe-hammer.js"></script>
+        <script type="application/javascript" src="sidebar/js/sidebar.js"></script>
+        <script type="application/javascript" src="js/index_user_scripts.js"></script>
+        <script type="application/javascript" src="app_framework/pageChangeRepeater.js"></script>
+        <script type="application/javascript" src="galleria/galleria-1.3.6.min.js"></script>
+        <script type="application/javascript" src="galleria/galleria.classic.min.js"></script>
+        <script type="application/javascript" src="galleria/galleria-startup.js"></script>
+        <script type="application/javascript" src="xdk/appdesigner/js/rest-of-space.js"></script>
+        <script type="application/javascript" src="xdk/ad/af_subpage.js"></script>
+    </head>
+
+    <body id="afui">
+
+        <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
+        <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work above -->
+        <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+        <header class="wrapping-col wrap-element uib_w_1" data-uib="app_framework/header" data-ver="2" id="af-header-0">
+            <h1>PRINCIPAL ANUNCIO</h1>
+        </header>
+        <header class="wrapping-col wrap-element uib_w_18 with-back" data-uib="app_framework/header" data-ver="2" id="af-header-1"><a class="button backButton">Back</a>
+            <h1>PUBLICA ANUNCIO</h1>
+        </header>
+        <header class="wrapping-col wrap-element uib_w_24 with-back" data-uib="app_framework/header" data-ver="2" id="af-header-2"><a class="button backButton">Back</a>
+            <h1>BUSCA ANUNCIO</h1>
+        </header>
+        <header class="wrapping-col wrap-element uib_w_35 with-back" data-uib="app_framework/header" data-ver="2" id="af-header-3"><a class="button backButton">Back</a>
+            <h1>SECCION EMPLEO</h1>
+        </header>
+        <header class="wrapping-col wrap-element uib_w_36 with-back" data-uib="app_framework/header" data-ver="2" id="af-header-4"><a class="button backButton">Back</a>
+            <h1>SECCION EMPLEO</h1>
+        </header>
+        <header class="wrapping-col wrap-element uib_w_39 with-back" data-uib="app_framework/header" data-ver="2" id="af-header-5"><a class="button backButton">Back</a>
+            <h1>OPCIONES ADMI.</h1>
+        </header>
+        <header class="wrapping-col wrap-element uib_w_42 with-back" data-uib="app_framework/header" data-ver="2" id="af-header-6"><a class="button backButton">Back</a>
+            <h1>SECCION VENTA:</h1>
+        </header>
+        <header class="wrapping-col wrap-element uib_w_45 with-back" data-uib="app_framework/header" data-ver="2" id="af-header-7"><a class="button backButton">Back</a>
+            <h1>LISTA EMPLEO</h1>
+        </header>
+        <header class="wrapping-col wrap-element uib_w_47 with-back" data-uib="app_framework/header" data-ver="2" id="af-header-8"><a class="button backButton">Back</a>
+            <h1>LISTA ALQUILER</h1>
+        </header>
+        <header class="wrapping-col wrap-element uib_w_49 with-back" data-uib="app_framework/header" data-ver="2" id="af-header-9"><a class="button backButton">Back</a>
+            <h1>LISTA VENTAS</h1>
+        </header>
+        <header class="wrapping-col wrap-element uib_w_56 with-back" data-uib="app_framework/header" data-ver="2" id="af-header-10"><a class="button backButton">Back</a>
+            <h1>ADMINISTRADOR</h1>
+        </header>
+        <header class="wrapping-col wrap-element uib_w_63" data-uib="app_framework/header" data-ver="2" id="af-header-5">
+            <h1></h1>
+        </header>
+        <header class="wrapping-col wrap-element uib_w_64 with-back" data-uib="app_framework/header" data-ver="2" id="af-header-11"><a class="button backButton">Back</a>
+            <h1></h1>
+        </header>
+        <div class="uwrap" id="content">
+            footer class="wrap-element uib_w_1" data-uib="app_framework/footer" data-ver="1" id="f-footer-0"&gt;
+            <div class="upage vertical-col panel" id="mainpage" data-footer="af-footer-0" data-header="af-header-0">
+
+                <div class="grid grid-pad urow uib_row_3 row-height-3" data-uib="layout/row" data-ver="0">
+
+                    <div class="col uib_col_6 col-0" data-uib="layout/col" data-ver="0">
+                        <div class="widget-container content-area vertical-col">
+
+                            <div class="widget uib_w_17 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                <figure class="figure-align">
+                                    <img src="imag/5.jpg">
+                                </figure>
+                            </div><span class="uib_shim"></span>
+                        </div>
+                    </div>
+                    <span class="uib_shim"></span>
+                </div>
+
+                <div class="widget uib_w_7 scale-image d-margins" data-uib="media/img" data-ver="0">
+                    <figure class="figure-align">
+                        <img src="imag/3.gif">
+
+                        <figcaption data-position="bottom"></figcaption>
+                    </figure>
+                </div>
+
+                <div class="uib-button-bar default-button-bar-height widget uib_w_14 d-margins" data-uib="media/button_bar" data-ver="0">
+                    <a class="uib-graphic-button default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_15 media-button-text-bottom" data-uib="media/graphic_button" data-ver="0" href="#idPublicaAnuncio" data-transition="fade">
+
+                        <img src="imag/10.gif">
+                        <span class="uib-caption">PUBLICAR ANUNCIO</span>
+                    </a>
+                    <a class="uib-graphic-button default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_16 media-button-text-bottom" data-uib="media/graphic_button" data-ver="0" href="#idBuscaAnuncio" data-transition="fade">
+                        <img src="imag/13.gif">
+                        <span class="uib-caption">BUSCAR ANUNCIO</span>
+
+                    </a>
+                </div>
+                <a class="button widget uib_w_59 d-margins" data-uib="app_framework/button" data-ver="1" href="#mainpageAdministrador" data-transition="fade">ADMINISTRADOR</a>
+            </div>
+            <div class="upage panel" id="idPublicaAnuncio" data-header="af-header-1" data-footer="none">
+
+                <div class="upage-outer">
+                    <div class="upage-content ac0 content-area vertical-col" id="page_82_45">
+
+                        <div class="widget uib_w_30 d-margins" data-uib="media/text" data-ver="0">
+                            <div class="widget-container left-receptacle"></div>
+                            <div class="widget-container right-receptacle"></div>
+                            <div>
+                                <p>SELECCIONE UNA OPCION PARA PUBLICAR:</p>
+                            </div>
+                        </div>
+                        <div class="uib-button-bar default-button-bar-height widget uib_w_31 d-margins" data-uib="media/button_bar" data-ver="0">
+                            <a class="uib-graphic-button default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_32 media-button-text-bottom" data-uib="media/graphic_button" data-ver="0" href="#idPublicaEmpleoEn" data-transition="fade">
+                                <img src="imag/E1.gif">
+                                <span class="uib-caption">EMPLEO</span>
+                            </a>
+                            <a class="uib-graphic-button default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_33 media-button-text-bottom" data-uib="media/graphic_button" data-ver="0" href="#idPublicaAlquilerEn"
+                            data-transition="fade">
+                                <img src="imag/E3.gif">
+                                <span class="uib-caption">ALQUILER</span>
+                            </a>
+                            <a class="uib-graphic-button default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_34 media-button-text-bottom" data-uib="media/graphic_button" data-ver="0" href="#idPublicaVentaEn" data-transition="fade">
+                                <img src="imag/E2.gif">
+                                <span class="uib-caption">VENTA</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="upage vertical-col panel" id="idBuscaAnuncio" data-header="af-header-2" data-footer="none">
+                <div class="widget uib_w_25 d-margins" data-uib="media/text" data-ver="0">
+                    <div class="widget-container left-receptacle"></div>
+                    <div class="widget-container right-receptacle"></div>
+                    <div>
+                        <p>SELECCIONE UNA OPCION PARA BUSCAR:</p>
+                    </div>
+                </div>
+                <div class="uib-button-bar default-button-bar-height widget uib_w_26 d-margins" data-uib="media/button_bar" data-ver="0">
+                    <a class="uib-graphic-button default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_27 media-button-text-bottom" data-uib="media/graphic_button" data-ver="0" href="#idBuscaEmpleoEn" data-transition="fade">
+                        <img src="imag/E1.gif">
+                        <span class="uib-caption">EMPLEO</span>
+                    </a>
+                    <a class="uib-graphic-button default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_28 media-button-text-bottom" data-uib="media/graphic_button" data-ver="0" href="#idBuscaEmpleoEn" data-transition="fade">
+                        <img src="imag/E3.gif">
+                        <span class="uib-caption">ALQUILER</span>
+                    </a>
+                    <a class="uib-graphic-button default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_29 media-button-text-bottom" data-uib="media/graphic_button" data-ver="0" href="#idBuscaVentaEn" data-transition="fade">
+                        <img src="imag/E2.gif">
+                        <span class="uib-caption">VENTA</span>
+                    </a>
+                </div>
+            </div>
+            <div class="upage vertical-col panel" id="idPublicaEmpleoEn" data-header="af-header-4" data-footer="none">
+                <div class="widget uib_w_37 d-margins" data-uib="media/text" data-ver="0">
+                    <div class="widget-container left-receptacle"></div>
+                    <div class="widget-container right-receptacle"></div>
+                    <div>
+                        <p>INGRESE SU EMPLEO AQUI:</p>
+                    </div>
+                </div>
+
+                <div class="table-thing with-label widget uib_w_51 d-margins mar" data-uib="app_framework/textarea" data-ver="1">
+                    <label class="narrow-control label-inline">Escribe Aqui:</label>
+                    <textarea class="wide-control" rows="2" wrap="soft"></textarea>
+                </div>
+                <a class="button widget uib_w_52 d-margins icon tools mar" data-uib="app_framework/button" data-ver="1">    GRABAR EMPLEO</a>
+                <a class="button widget uib_w_73 d-margins icon down" data-uib="app_framework/button" data-ver="1">  SALIR</a>
+            </div>
+            <div class="upage vertical-col panel" id="idPublicaAlquilerEn" data-header="af-header-5" data-footer="none">
+                <div class="widget uib_w_40 d-margins" data-uib="media/text" data-ver="0">
+                    <div class="widget-container left-receptacle"></div>
+                    <div class="widget-container right-receptacle"></div>
+                    <div>
+                        <p>INGRESA TU ALQUILER AQUI:</p>
+                    </div>
+                </div>
+                <div class="table-thing with-label widget uib_w_53 d-margins mar" data-uib="app_framework/textarea" data-ver="1">
+                    <label class="narrow-control label-inline">Escribe Aqui:</label>
+                    <textarea class="wide-control" rows="2" wrap="soft"></textarea>
+                </div><a class="button widget uib_w_54 d-margins mar icon key" data-uib="app_framework/button" data-ver="1">   GRABAR ALQUILER</a>
+                <a class="button widget uib_w_72 d-margins icon down" data-uib="app_framework/button" data-ver="1">SALIR</a>
+            </div>
+            <div class="upage vertical-col panel" id="idPublicaVentaEn" data-header="af-header-6" data-footer="none">
+                <div class="widget uib_w_43 d-margins" data-uib="media/text" data-ver="0">
+                    <div class="widget-container left-receptacle"></div>
+                    <div class="widget-container right-receptacle"></div>
+                    <div>
+                        <p>INGRESE SU VENTA AQUI:</p>
+                    </div>
+                </div>
+
+                <div class="table-thing with-label widget uib_w_55 d-margins mar" data-uib="app_framework/textarea" data-ver="1">
+                    <label class="narrow-control label-inline">Escribe Aqui:</label>
+                    <textarea class="wide-control" rows="2" wrap="soft"></textarea>
+                </div>
+                <a class="button widget uib_w_70 d-margins mar icon graph" data-uib="app_framework/button" data-ver="1">   GRABAR VENTA</a>
+                <a class="button widget uib_w_71 d-margins icon down" data-uib="app_framework/button" data-ver="1">   SALIR</a>
+            </div>
+            <div class="upage vertical-col panel" id="idBuscaEmpleoEn" data-header="af-header-7" data-footer="none">
+                <div class="widget uib_w_46 d-margins" data-uib="media/text" data-ver="0">
+                    <div class="widget-container left-receptacle"></div>
+                    <div class="widget-container right-receptacle"></div>
+                    <div>
+                        <p>AQUI LISTA DE EMPLEOS:</p>
+                    </div>
+                </div>
+            </div>
+            <div class="upage vertical-col panel" id="idBuscarAlquilerEn" data-header="af-header-8" data-footer="none">
+                <div class="widget uib_w_48 d-margins" data-uib="media/text" data-ver="0">
+                    <div class="widget-container left-receptacle"></div>
+                    <div class="widget-container right-receptacle"></div>
+                    <div>
+                        <p>AQUI LISTA DE ALQUILER:</p>
+                    </div>
+                </div>
+            </div>
+            <div class="upage vertical-col left panel" id="idBuscaVentaEn" data-header="af-header-9" data-footer="none">
+                <div class="widget uib_w_50 d-margins" data-uib="media/text" data-ver="0">
+                    <div class="widget-container left-receptacle"></div>
+                    <div class="widget-container right-receptacle"></div>
+                    <div>
+                        <p>AQUI LISTA DE VENTAS:</p>
+                    </div>
+                </div>
+            </div>
+            <div class="upage vertical-col panel" id="mainpageAdministrador" data-header="af-header-10" data-footer="none">
+
+                <div class="widget uib_w_57 scale-image d-margins" data-uib="media/img" data-ver="0">
+                    <figure class="figure-align">
+                        <img src="imag/llave.jpg">
+
+                        <figcaption data-position="bottom"></figcaption>
+                    </figure>
+                </div>
+
+                <div class="table-thing with-label widget uib_w_60 d-margins mar" data-uib="app_framework/input" data-ver="1">
+                    <label class="narrow-control label-inline">USUARIO</label>
+                    <input class="wide-control" placeholder="Placeholder Text" type="text">
+                </div>
+                <div class="table-thing with-label widget uib_w_61 d-margins mar" data-uib="app_framework/input" data-ver="1">
+                    <label class="narrow-control label-inline">CONTRASE;A</label>
+                    <input class="wide-control" placeholder="Placeholder Text" type="text">
+                </div><a class="button widget uib_w_62 d-margins icon key" data-uib="app_framework/button" data-ver="1" href="#idAdminstradorOpciones" data-transition="fade">    INGRESAR</a>
+            </div>
+
+            <div class="upage vertical-col panel" id="idAdminstradorOpciones" data-header="af-header-11" data-footer="none">
+                <div class="widget uib_w_65 d-margins" data-uib="media/text" data-ver="0">
+                    <div class="widget-container left-receptacle"></div>
+                    <div class="widget-container right-receptacle"></div>
+                    <div>
+                        <p>ESCOGE UNA OPCION:</p>
+                    </div>
+                </div>
+                <div class="uib-button-bar default-button-bar-height widget uib_w_66 d-margins" data-uib="media/button_bar" data-ver="0">
+                    <a class="uib-graphic-button default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_67 media-button-text-bottom" data-uib="media/graphic_button" data-ver="0" href="#idBuscaEmpleoEn" data-transition="fade">
+                        <img src="imag/E1.gif">
+                        <span class="uib-caption">EMPLEOS</span>
+                    </a>
+                    <a class="uib-graphic-button default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_68 media-button-text-bottom" data-uib="media/graphic_button" data-ver="0" href="#idBuscarAlquilerEn"
+                    data-transition="fade">
+                        <img src="imag/E3.gif">
+                        <span class="uib-caption">ALQUILERES</span>
+                    </a>
+                    <a class="uib-graphic-button default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_69 media-button-text-bottom" data-uib="media/graphic_button" data-ver="0" href="#idBuscaVentaEn" data-transition="fade">
+                        <img src="imag/E2.gif">
+                        <span class="uib-caption">VENTAS</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <iv>
+
+        </iv>
+    </body>
+
+</html>
